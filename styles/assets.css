@@ -10,6 +10,7 @@
     align-items: center;
     z-index: 1000;
 }
+
 .modern-spinner {
     width: 50px;
     height: 50px;
@@ -18,12 +19,51 @@
     border-top-color: #3498db;
     animation: spin 1s ease-in-out infinite;
 }
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 progress {
     appearance: none;
     height: 8px;
     border-radius: 4px;
     background-color: #eee;
 }
+
+progress::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 4px;
+}
+
 progress.stat-green::-webkit-progress-value {
     background-color: #2ecc71;
+}
+
+progress.stat-red::-webkit-progress-value {
+    background-color: #e74c3c;
+}
+
+progress.stat-blue::-webkit-progress-value {
+    background-color: #3498db;
+}
+
+progress::-moz-progress-bar {
+    border-radius: 4px;
+}
+
+progress.stat-green::-moz-progress-bar {
+    background-color: #2ecc71;
+}
+
+progress.stat-red::-moz-progress-bar {
+    background-color: #e74c3c;
+}
+
+progress.stat-blue::-moz-progress-bar {
+    background-color: #3498db;
 }
