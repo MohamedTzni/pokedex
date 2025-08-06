@@ -7,3 +7,17 @@ body {
 .overflow-y-hidden {
   overflow-y: hidden;
 }
+.logo-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.main-title {
+  font-size: 48px;
+  margin: 0;
+}
