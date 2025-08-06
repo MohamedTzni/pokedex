@@ -18,3 +18,7 @@ function getOverlayAboutTemplate(pokemon, abilities) {
         </table>
     `;
 }
+function getOverlayStatsTemplate(stats) {
+    const statBars = stats.map(...).join("");
+    return `<table id="overlay-bottom-content-table">${statBars}</table>`;
+}
