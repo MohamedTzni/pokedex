@@ -28,3 +28,12 @@ async function loadPokemon(amount) {
   }
   isLoading = false;
 }
+function renderPokemon() {
+  let container = document.getElementById("pokemon-grid");
+  container.innerHTML = "";
+  let list = filteredPokemon.length ? filteredPokemon : allPokemon;
+  list.forEach((pokemon, index) => {
+    let card = getPokemonCardTemplate(pokemon, index);
+    container.innerHTML += card;
+  });
+}
