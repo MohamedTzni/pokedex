@@ -43,3 +43,8 @@ body {
   gap: 20px;
   padding: 20px;
 }
+.not-found {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
