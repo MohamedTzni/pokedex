@@ -16,3 +16,15 @@ async function loadMore() {
   renderPokemon();
   toggleLoading(false);
 }
+
+async function loadPokemon(amount) {
+  isLoading = true;
+  for (let i = 0; i < amount; i++) {
+    let url = `https://pokeapi.co/api/v2/pokemon/${currentPokemon}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    allPokemon.push(data);
+    currentPokemon++;
+  }
+  isLoading = false;
+}
