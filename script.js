@@ -278,17 +278,20 @@ function updateAndRenderCurrentPokemon() {
     renderPokemonCards();
 }
 
-document.getElementById("search-input").addEventListener("input", debounce(handleSearch, 250));
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        closeOverlay();
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    if (searchInput) {
+        searchInput.addEventListener("input", debounce(handleSearch, 250));
     }
 
-    const overlay = document.getElementById("overlay");
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeOverlay();
 
-    if (!overlay.classList.contains("d-none")) {
-        if (event.key === "ArrowRight") changePokemon(1);
-        if (event.key === "ArrowLeft") changePokemon(-1);
-    }
+        const overlay = document.getElementById("overlay");
+        if (!overlay.classList.contains("d-none")) {
+            if (event.key === "ArrowRight") changePokemon(1);
+            if (event.key === "ArrowLeft") changePokemon(-1);
+        }
+    });
 });
