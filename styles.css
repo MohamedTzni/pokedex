@@ -90,3 +90,6 @@ body {
     transform: rotate(360deg);
   }
 }
+.d-none {
+  display: none !important;
+}
