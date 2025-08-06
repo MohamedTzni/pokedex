@@ -1,25 +1,12 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pokemon-overlay {
-    max-width: 400px;
-    max-height: 90vh;
-    border-radius: 12px;
-    overflow: hidden;
-}
-.overlay-menu button.active {
-    color: #3498db;
-}
-.overlay-menu button.active::after {
-    content: '';
-    height: 3px;
-    background-color: #3498db;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
 }
