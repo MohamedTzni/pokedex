@@ -44,3 +44,22 @@ function getOverlayAboutTemplate(pokemon, abilities) {
         </table>
     `;
 }
+function getOverlayStatsTemplate(stats) {
+    const statBars = stats.map(stat => {
+        const value = stat.base_stat;
+        const name = capitalizeFirstLetter(stat.stat.name);
+        const className = getStatClass(name);
+
+        return `
+            <tr>
+                <td>${name}:</td>
+                <td>
+                    <progress value="${value}" max="200" class="${className}"></progress>
+                    <span>${value}</span>
+                </td>
+            </tr>
+        `;
+    }).join("");
+
+    return `<table id="overlay-bottom-content-table">${statBars}</table>`;
+}
