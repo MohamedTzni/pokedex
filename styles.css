@@ -31,3 +31,22 @@
   font-weight: bold;
   font-size: 18px;
 }
+.pokemon-card-body {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.types {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.pokemon-type {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+}
