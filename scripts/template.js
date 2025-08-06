@@ -35,3 +35,12 @@ function getOverlayPokemonTemplate(pokemon, typesHTML, bgColor) {
         </div>
     `;
 }
+function getOverlayAboutTemplate(pokemon, abilities) {
+    return `
+        <table id="overlay-bottom-content-table">
+            <tr><td>Height:</td><td>${pokemon.height} m</td></tr>
+            <tr><td>Weight:</td><td>${pokemon.weight} kg</td></tr>
+            <tr><td>Abilities:</td><td>${abilities}</td></tr>
+        </table>
+    `;
+}
