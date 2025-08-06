@@ -9,3 +9,9 @@
     justify-content: center;
     align-items: center;
 }
+.pokemon-overlay {
+    max-width: 400px;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+}
