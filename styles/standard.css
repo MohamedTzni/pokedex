@@ -1,20 +1,9 @@
 html {
     scroll-behavior: smooth;
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-.d-none {
-    display: none !important;
-}
-.overflow-y-hidden {
-    overflow-y: hidden;
-}
-.not-found {
-    text-align: center;
-    color: #e74c3c;
-    grid-column: 1 / -1;
-    margin: 20px 0;
 }
