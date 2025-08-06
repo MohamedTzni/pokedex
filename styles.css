@@ -48,3 +48,18 @@ body {
   font-size: 24px;
   margin-top: 20px;
 }
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  margin: 10px;
+}
+
+.seville {
+  background-color: #ff5c5c;
+}
