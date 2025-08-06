@@ -52,3 +52,14 @@ function resetSearch() {
   toggleResetButton(false);
   toggleNotFoundMessage(false);
 }
+function toggleResetButton(show) {
+  document.querySelector(".reset-btn").classList.toggle("d-none", !show);
+}
+
+function toggleNotFoundMessage(show) {
+  document.querySelector(".not-found").classList.toggle("d-none", !show);
+}
+
+function toggleLoading(show) {
+  document.getElementById("loading").classList.toggle("d-none", !show);
+}
