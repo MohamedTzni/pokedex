@@ -37,3 +37,18 @@ function renderPokemon() {
     container.innerHTML += card;
   });
 }
+function handleSearch(event) {
+  let value = event.target.value.toLowerCase();
+  filteredPokemon = allPokemon.filter(pokemon => pokemon.name.toLowerCase().includes(value));
+  renderPokemon();
+  toggleResetButton(value.length > 0);
+  toggleNotFoundMessage(filteredPokemon.length === 0 && value.length > 0);
+}
+
+function resetSearch() {
+  document.getElementById("search-input").value = "";
+  filteredPokemon = [];
+  renderPokemon();
+  toggleResetButton(false);
+  toggleNotFoundMessage(false);
+}
