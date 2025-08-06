@@ -18,3 +18,12 @@
     border-top-color: #3498db;
     animation: spin 1s ease-in-out infinite;
 }
+progress {
+    appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #eee;
+}
+progress.stat-green::-webkit-progress-value {
+    background-color: #2ecc71;
+}
