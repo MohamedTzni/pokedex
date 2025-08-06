@@ -50,3 +50,18 @@
   border-radius: 12px;
   font-size: 14px;
 }
+.modern-spinner {
+  width: 80px;
+  height: 80px;
+  border: 10px solid #ccc;
+  border-top: 10px solid #ff5c5c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 80px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
