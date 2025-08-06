@@ -1,4 +1,4 @@
-// script.js
+
 const pokemonArray = [];
 const currentPokemon = [];
 const loadedPokemonIds = new Set();
@@ -23,7 +23,7 @@ async function loadMore() {
     toggleBtnLoading();
     document.getElementById("search-input").value = "";
 
-    // Store current scroll position
+ 
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
     
     if (renderedCount >= pokemonArray.length) {
@@ -33,7 +33,7 @@ async function loadMore() {
     updateAndRenderCurrentPokemon();
     toggleBtnLoading();
     
-    // Restore scroll position after rendering
+   
     window.scrollTo(0, scrollPosition);
 }
 

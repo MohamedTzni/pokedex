@@ -1,4 +1,4 @@
-/* Base Styles */
+
 body {
     font-family: "Roboto", sans-serif;
     background-color: #f5f5f5;
@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
+
 header {
     background-color: #e74c3c;
     color: white;
@@ -38,7 +38,7 @@ header {
     width: 50px;
 }
 
-/* Main Content */
+
 .content {
     flex: 1;
     max-width: 1200px;
@@ -67,7 +67,7 @@ header {
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-/* Pokémon Grid */
+
 .pokemon-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -138,7 +138,7 @@ header {
     object-fit: contain;
 }
 
-/* Buttons */
+
 .action-buttons {
     display: flex;
     justify-content: center;
@@ -170,7 +170,7 @@ header {
     transition: 0.1s;
 }
 
-/* Footer */
+
 .modern-footer {
     background-color: #e74c3c;
     color: white;
@@ -200,7 +200,7 @@ header {
     text-decoration: underline;
 }
 
-/* Loading Spinner */
+
 .modern-spinner {
     width: 50px;
     height: 50px;
@@ -214,7 +214,7 @@ header {
     to { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
+
 @media (max-width: 1100px) {
     .pokemon-grid {
         grid-template-columns: repeat(4, 1fr);

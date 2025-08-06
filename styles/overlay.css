@@ -173,7 +173,7 @@
     transform: scale(1.1);
 }
 
-/* Responsive Anpassungen */
+
 @media (max-width: 450px) {
     .pokemon-overlay {
         width: 95vw;
