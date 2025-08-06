@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pokédex</title>
-
-
-  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.png" />
-
-
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="styles/standard.css" />
-  <link rel="stylesheet" href="styles/assets.css" />
-  <link rel="stylesheet" href="styles/overlay.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/overlay.css">
+    <script src="./scripts/templates.js"></script>
+    <script src="./scripts/db.js"></script>
 </head>
 <body onload="init()">
-  <header>
-    <div class="header-content">
-      <img class="logo" src="assets/icons/pokeball_icon.png" alt="Pokémon Logo" />
-      <h1>Pokédex</h1>
+    <header>
+        <div class="header-content">
+            <img class="logo" src="./assets/icons/pokeball_icon.png" alt="Pokémon Logo">
+            <h1>Pokédex</h1>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="search-container">
+            <input id="search-input" type="search" placeholder="Pokémon suchen...">
+        </div>
+        
+        <div id="pokemons" class="pokemon-grid"></div>
+        
+        <div class="action-buttons">
+            <div class="html_button btn-left">
+                <a href="#" class="btn seville large" onclick="loadMore()">Mehr laden</a>
+            </div>
+            <div class="html_button btn-left">
+                <a href="#" class="btn seville large" onclick="resetPokedex()">Pokédex zurücksetzen</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="overlay" class="overlay d-none" onclick="closeOverlay()">
+        <div id="pokemon-overlay" class="pokemon-overlay" onclick="preventBubbling(event)"></div>
     </div>
-  </header>
 
-  <main class="content">
-    <div class="search-container">
-      <input id="search-input" type="search" placeholder="Pokémon suchen..." />
+    <div id="loading" class="d-none">
+        <div class="modern-spinner"></div>
     </div>
 
-    <div id="pokemons" class="pokemon-grid"></div>
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <p>Mohamed Touzani</p>
+            <p>&#169; Copyright 2025</p>
+        </div>
+    </footer>
 
-    <div class="action-buttons">
-      <div class="html_button btn-left">
-        <a href="#" class="btn seville large" onclick="loadMore()">Mehr laden</a>
-      </div>
-      <div class="html_button btn-left">
-        <a href="#" class="btn seville large" onclick="resetPokedex()">Pokédex zurücksetzen</a>
-      </div>
-    </div>
-  </main>
-
-  <div id="overlay" class="overlay d-none" onclick="closeOverlay()">
-    <div id="pokemon-overlay" class="pokemon-overlay" onclick="preventBubbling(event)"></div>
-  </div>
-
-  <div id="loading" class="d-none">
-    <div class="modern-spinner"></div>
-  </div>
-
-  <footer class="modern-footer">
-    <div class="footer-content">
-      <p>Mohamed Touzani</p>
-      <p>&#169; Copyright 2025</p>
-    </div>
-  </footer>
-
-
-  <script src="scripts/template.js"></script>
-  <script src="scripts/db.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+// script.js
 const pokemonArray = [];
 const currentPokemon = [];
 const loadedPokemonIds = new Set();
@@ -22,12 +23,18 @@ async function loadMore() {
     toggleBtnLoading();
     document.getElementById("search-input").value = "";
 
+    // Store current scroll position
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
     if (renderedCount >= pokemonArray.length) {
         await loadPokemon();
     }
 
     updateAndRenderCurrentPokemon();
     toggleBtnLoading();
+    
+    // Restore scroll position after rendering
+    window.scrollTo(0, scrollPosition);
 }
 
 async function loadPokemon() {
@@ -121,9 +128,8 @@ function loadSavedPokemons() {
     const savedArray = localStorage.getItem("pokemonArray");
     const savedIds = localStorage.getItem("loadedPokemonIds");
 
-    pokemonArray.push(...JSON.parse(savedArray || "[]"));
-    const ids = JSON.parse(savedIds || "[]");
-    ids.forEach(id => loadedPokemonIds.add(id));
+    currentPokemon.push(...JSON.parse(savedArray || "[]"));
+    JSON.parse(savedIds || "[]").forEach(id => loadedPokemonIds.add(id));
 
     offset = parseInt(localStorage.getItem("offset") || "0", 10);
 }
@@ -135,16 +141,19 @@ function resetPokedex() {
 
 function handleSearch(event) {
     const value = event.target.value.toLowerCase();
+    const actionButtons = document.querySelector(".action-buttons");
 
     if (value.length < 3) {
         currentPokemon.length = 0;
         currentPokemon.push(...pokemonArray.slice(0, renderedCount));
+        actionButtons.style.display = "flex";
         renderPokemonCards();
         return;
     }
 
     currentPokemon.length = 0;
     currentPokemon.push(...filterPokemon(value));
+    actionButtons.style.display = "none";
 
     if (currentPokemon.length === 0) {
         searchNotFoundMessage();
@@ -189,26 +198,16 @@ function preventBubbling(event) {
 }
 
 function changePokemon(direction) {
-    selectedPokemonIndex += direction;
-
-    if (selectedPokemonIndex < 0) {
-        selectedPokemonIndex = currentPokemon.length - 1;
-    }
-
-    if (selectedPokemonIndex >= currentPokemon.length) {
-        selectedPokemonIndex = 0;
-    }
-
+    selectedPokemonIndex = (selectedPokemonIndex + direction + currentPokemon.length) % currentPokemon.length;
     renderOverlayPokemon(currentPokemon[selectedPokemonIndex]);
 }
 
 function renderOverlayPokemon(pokemon) {
     const typesHTML = pokemon.types.map(t => getPokemonTypesTemplate(t)).join("");
     const bgColor = TYPE_COLORS[pokemon.types[0].type.name] || "#777";
-
     const overlay = document.getElementById("pokemon-overlay");
-    overlay.innerHTML = getOverlayPokemonTemplate(pokemon, typesHTML, bgColor);
 
+    overlay.innerHTML = getOverlayPokemonTemplate(pokemon, typesHTML, bgColor);
     toggleOverlaySection("about");
 }
 
@@ -216,20 +215,21 @@ function toggleOverlaySection(section) {
     const pokemon = currentPokemon[selectedPokemonIndex];
     const abilities = pokemon.abilities.map(a => capitalizeFirstLetter(a.ability.name)).join(", ");
     const content = document.getElementById("overlay-bottom-content-table");
+    const bottom = document.querySelector(".overlay-bottom");
 
     toggleOverlayMenuButtonActive(section);
 
     if (section === "about") {
         content.innerHTML = getOverlayAboutTemplate(pokemon, abilities);
+        bottom.classList.remove("scrollable");
     } else if (section === "stats") {
         content.innerHTML = getOverlayStatsTemplate(pokemon.stats);
+        bottom.classList.add("scrollable");
     }
 }
 
 function toggleOverlayMenuButtonActive(section) {
-    const buttons = document.querySelectorAll(".overlay-menu button");
-
-    buttons.forEach(button => {
+    document.querySelectorAll(".overlay-menu button").forEach(button => {
         const isActive = button.textContent.toLowerCase().includes(section);
         button.classList.toggle("active", isActive);
     });
@@ -247,10 +247,10 @@ function toggleBtnLoading() {
     const buttons = document.querySelectorAll(".action-buttons .seville");
     const loader = document.getElementById("loading");
 
-    buttons.forEach(button => {
-        const disabled = button.style.pointerEvents === "none";
-        button.style.pointerEvents = disabled ? "auto" : "none";
-        button.style.opacity = disabled ? "1" : "0.5";
+    buttons.forEach(btn => {
+        const disabled = btn.style.pointerEvents === "none";
+        btn.style.pointerEvents = disabled ? "auto" : "none";
+        btn.style.opacity = disabled ? "1" : "0.5";
     });
 
     loader.classList.toggle("d-none");
@@ -258,12 +258,11 @@ function toggleBtnLoading() {
 
 async function fetchData(url = "") {
     const response = await fetch(url);
-    return await response.json();
+    return response.json();
 }
 
 function debounce(callback, delay) {
     let timeout;
-
     return (...args) => {
         clearTimeout(timeout);
         timeout = setTimeout(() => callback(...args), delay);
@@ -278,18 +277,16 @@ function updateAndRenderCurrentPokemon() {
     renderPokemonCards();
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     if (searchInput) {
         searchInput.addEventListener("input", debounce(handleSearch, 250));
     }
 
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", event => {
         if (event.key === "Escape") closeOverlay();
-
-        const overlay = document.getElementById("overlay");
-        if (!overlay.classList.contains("d-none")) {
+        const overlayEl = document.getElementById("overlay");
+        if (!overlayEl.classList.contains("d-none")) {
             if (event.key === "ArrowRight") changePokemon(1);
             if (event.key === "ArrowLeft") changePokemon(-1);
         }

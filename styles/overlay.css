@@ -1,4 +1,4 @@
-.overlay {
+#overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,9 +12,8 @@
 }
 
 .pokemon-overlay {
-    width: 90%;
-    max-width: 400px;
-    max-height: 90vh;
+    width: 400px;
+    height: 600px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -30,7 +29,7 @@
 .overlay-top {
     padding: 20px;
     position: relative;
-    background-image: url('../assets/icons/pokeball_icon_black.png');
+    background-image: url('./assets/icons/pokeball_icon_black.png');
     background-size: 150px;
     background-position: center;
     background-repeat: no-repeat;
@@ -129,6 +128,11 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
+}
+
+.overlay-bottom.scrollable {
+    overflow-y: auto;
 }
 
 .overlay-bottom-content {
@@ -167,4 +171,42 @@
 
 .nav-icon:hover {
     transform: scale(1.1);
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 450px) {
+    .pokemon-overlay {
+        width: 95vw;
+        height: 90vh;
+        max-height: 600px;
+    }
+
+    .top-header {
+        font-size: 18px;
+    }
+
+    .image img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .overlay-menu button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .nav-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .overlay-bottom {
+        padding: 15px;
+    }
+}
+
+@media (max-height: 700px) {
+    .pokemon-overlay {
+        height: 85vh;
+    }
 }
