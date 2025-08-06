@@ -15,3 +15,7 @@
         <img src="./assets/icons/pokedex.png" class="header-icon" alt="Pokédex Logo">
         <h1 class="header-title">Pokédex</h1>
     </header>
+    <div class="search-container">
+        <input id="search-input" type="search" placeholder="Pokémon suchen..." oninput="handleSearch(event)">
+        <button onclick="resetSearch()" class="reset-btn d-none">Zurücksetzen</button>
+    </div>
