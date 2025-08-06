@@ -1,6 +1,7 @@
 function getPokemonTypesTemplate(type) {
     return `<div class="pokemon-type">${capitalizeFirstLetter(type.type.name)}</div>`;
 }
+
 function getOverlayPokemonTemplate(pokemon, typesHTML, bgColor) {
     return `
         <div class="pokemon-overlay-content" style="--bg-color: ${bgColor}">
@@ -35,6 +36,7 @@ function getOverlayPokemonTemplate(pokemon, typesHTML, bgColor) {
         </div>
     `;
 }
+
 function getOverlayAboutTemplate(pokemon, abilities) {
     return `
         <table id="overlay-bottom-content-table">
@@ -44,6 +46,7 @@ function getOverlayAboutTemplate(pokemon, abilities) {
         </table>
     `;
 }
+
 function getOverlayStatsTemplate(stats) {
     const statBars = stats.map(stat => {
         const value = stat.base_stat;
@@ -63,6 +66,7 @@ function getOverlayStatsTemplate(stats) {
 
     return `<table id="overlay-bottom-content-table">${statBars}</table>`;
 }
+
 function getStatClass(name) {
     if (["HP", "Defense", "Sp. Def."].includes(name)) return "stat-green";
     if (["Attack", "Sp. Atk."].includes(name)) return "stat-red";
