@@ -63,3 +63,15 @@ function toggleNotFoundMessage(show) {
 function toggleLoading(show) {
   document.getElementById("loading").classList.toggle("d-none", !show);
 }
+function showPokemon(index) {
+  let list = filteredPokemon.length ? filteredPokemon : allPokemon;
+  let pokemon = list[index];
+  let typesHTML = pokemon.types.map(t => `<span class="pokemon-overlay-type">${t.type.name}</span>`).join("");
+  let bgColor = getComputedStyle(document.documentElement).getPropertyValue("--bg-color");
+
+  let overlay = getOverlayPokemonTemplate(pokemon, typesHTML, bgColor);
+  document.getElementById("pokemon-overlay").innerHTML = overlay;
+  document.getElementById("overlay").classList.remove("d-none");
+
+  renderAbout(pokemon);
+}
