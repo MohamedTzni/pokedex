@@ -95,3 +95,10 @@ function showTab(tabName) {
   });
   document.getElementById(`tab-${tabName}`).classList.add("active");
 }
+function closeOverlay() {
+  document.getElementById("overlay").classList.add("d-none");
+}
+
+function preventBubbling(event) {
+  event.stopPropagation();
+}
