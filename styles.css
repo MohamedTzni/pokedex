@@ -11,3 +11,17 @@
   gap: 32px;
   padding: 32px;
 }
+.pokemon-card {
+  width: 200px;
+  background-color: var(--bg-color);
+  border-radius: 16px;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
