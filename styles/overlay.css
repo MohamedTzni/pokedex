@@ -1,79 +1,170 @@
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .pokemon-overlay {
-  background-color: var(--bg-color);
-  border-radius: 16px;
-  padding: 24px;
-  width: 80%;
-  max-width: 600px;
-  color: white;
-  position: relative;
-}
-.pokemon-overlay-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-}
-.pokemon-overlay-image {
-  text-align: center;
-  margin: 16px 0;
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.pokemon-overlay-image img {
-  width: 120px;
-  height: 120px;
+.pokemon-overlay-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--bg-color);
 }
 
-.pokemon-overlay-types {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
+.overlay-top {
+    padding: 20px;
+    position: relative;
+    background-image: url('../assets/icons/pokeball_icon_black.png');
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
 }
 
-.pokemon-overlay-type {
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 14px;
-}
-.pokemon-overlay-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 16px;
+.overlay-close-icon-container {
+    display: flex;
+    justify-content: flex-end;
 }
 
-.pokemon-overlay-tab {
-  padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  cursor: pointer;
+.overlay-close-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    filter: invert(1);
 }
 
-.pokemon-overlay-tab.active {
-  background-color: white;
-  color: var(--bg-color);
+.overlay-close-icon:hover {
+    transform: scale(1.1);
 }
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.types {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.types .pokemon-type {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.image img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.overlay-menu {
+    background-color: white;
+    padding: 10px 0;
+}
+
+.overlay-menu-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.overlay-menu button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.overlay-menu button.active {
+    color: #3498db;
+}
+
+.overlay-menu button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 3px;
+    background-color: #3498db;
+    border-radius: 3px 3px 0 0;
+}
+
+.overlay-bottom {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay-bottom-content {
+    flex: 1;
+}
+
 #overlay-bottom-content-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
 }
 
 #overlay-bottom-content-table td {
-  padding: 8px;
+    padding: 5px 0;
+}
+
+#overlay-bottom-content-table tr td:first-child {
+    font-weight: 600;
+    color: #555;
+    width: 100px;
+}
+
+.overlay-bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 10px;
+}
+
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.nav-icon:hover {
+    transform: scale(1.1);
 }
