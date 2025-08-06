@@ -2,6 +2,21 @@ function getPokemonTypesTemplate(type) {
     return `<div class="pokemon-type">${capitalizeFirstLetter(type.type.name)}</div>`;
 }
 
+function getPokemonCardTemplate(pokemon, typesHTML, bgColor, index) {
+    return `
+        <div class="pokemon-card" 
+             style="--bg-color: ${bgColor}"
+             onclick="openOverlay(${index})">
+            <div class="name-id">
+                <h4 class="pokemon-name">${capitalizeFirstLetter(pokemon.name)}</h4>
+                <span class="pokemon-id">#${pokemon.id.toString().padStart(3, '0')}</span>
+            </div>
+            <div class="pokemon-types">${typesHTML}</div>
+            <img src="${pokemon.image}" alt="${pokemon.name}" loading="lazy" />
+        </div>
+    `;
+}
+
 function getOverlayPokemonTemplate(pokemon, typesHTML, bgColor) {
     return `
         <div class="pokemon-overlay-content" style="--bg-color: ${bgColor}">

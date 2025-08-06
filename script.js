@@ -1,4 +1,3 @@
-
 const pokemonArray = [];
 const currentPokemon = [];
 const loadedPokemonIds = new Set();
@@ -23,7 +22,6 @@ async function loadMore() {
     toggleBtnLoading();
     document.getElementById("search-input").value = "";
 
- 
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
     
     if (renderedCount >= pokemonArray.length) {
@@ -33,7 +31,6 @@ async function loadMore() {
     updateAndRenderCurrentPokemon();
     toggleBtnLoading();
     
-   
     window.scrollTo(0, scrollPosition);
 }
 
@@ -97,24 +94,10 @@ function renderPokemonCards() {
     container.innerHTML = "";
 
     currentPokemon.forEach((pokemon, index) => {
-        const typesHTML = pokemon.types.map(type =>
-            `<div class="pokemon-type">${capitalizeFirstLetter(type.type.name)}</div>`
-        ).join("");
-
+        const typesHTML = pokemon.types.map(type => getPokemonTypesTemplate(type)).join("");
         const bgColor = TYPE_COLORS[pokemon.types[0].type.name] || "#777";
 
-        container.innerHTML += `
-            <div class="pokemon-card" 
-                 style="--bg-color: ${bgColor}"
-                 onclick="openOverlay(${index})">
-                <div class="name-id">
-                    <h4 class="pokemon-name">${capitalizeFirstLetter(pokemon.name)}</h4>
-                    <span class="pokemon-id">#${pokemon.id.toString().padStart(3, '0')}</span>
-                </div>
-                <div class="pokemon-types">${typesHTML}</div>
-                <img src="${pokemon.image}" alt="${pokemon.name}" loading="lazy" />
-            </div>
-        `;
+        container.innerHTML += getPokemonCardTemplate(pokemon, typesHTML, bgColor, index);
     });
 }
 
