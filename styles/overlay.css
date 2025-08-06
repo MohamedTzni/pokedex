@@ -26,3 +26,27 @@
   font-size: 24px;
   font-weight: bold;
 }
+.pokemon-overlay-image {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.pokemon-overlay-image img {
+  width: 120px;
+  height: 120px;
+}
+
+.pokemon-overlay-types {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.pokemon-overlay-type {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
