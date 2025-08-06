@@ -63,3 +63,9 @@ function getOverlayStatsTemplate(stats) {
 
     return `<table id="overlay-bottom-content-table">${statBars}</table>`;
 }
+function getStatClass(name) {
+    if (["HP", "Defense", "Sp. Def."].includes(name)) return "stat-green";
+    if (["Attack", "Sp. Atk."].includes(name)) return "stat-red";
+    if (["Speed", "Total"].includes(name)) return "stat-blue";
+    return "";
+}
