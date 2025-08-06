@@ -25,3 +25,9 @@ button {
 .overflow-y-hidden {
     overflow-y: hidden;
 }
+.not-found {
+    text-align: center;
+    color: #e74c3c;
+    grid-column: 1 / -1;
+    margin: 20px 0;
+}
