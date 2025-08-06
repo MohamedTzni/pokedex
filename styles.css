@@ -25,3 +25,9 @@
 .pokemon-card:hover {
   transform: scale(1.05);
 }
+.pokemon-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 18px;
+}
