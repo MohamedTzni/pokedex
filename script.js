@@ -75,3 +75,23 @@ function showPokemon(index) {
 
   renderAbout(pokemon);
 }
+function showTab(tabName) {
+  let list = filteredPokemon.length ? filteredPokemon : allPokemon;
+  let index = parseInt(document.getElementById("pokemon-overlay").getAttribute("data-index"));
+  let pokemon = list[index];
+
+  let content = "";
+  if (tabName === "about") {
+    let abilities = pokemon.abilities.map(a => a.ability.name).join(", ");
+    content = getOverlayAboutTemplate(pokemon, abilities);
+  } else if (tabName === "stats") {
+    content = getOverlayStatsTemplate(pokemon.stats);
+  }
+
+  document.getElementById("overlay-bottom-content").innerHTML = content;
+
+  document.querySelectorAll(".pokemon-overlay-tab").forEach(tab => {
+    tab.classList.remove("active");
+  });
+  document.getElementById(`tab-${tabName}`).classList.add("active");
+}
