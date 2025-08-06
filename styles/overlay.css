@@ -68,3 +68,12 @@
   background-color: white;
   color: var(--bg-color);
 }
+#overlay-bottom-content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+#overlay-bottom-content-table td {
+  padding: 8px;
+}
